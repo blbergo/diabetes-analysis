@@ -2,6 +2,7 @@ with import <nixpkgs> { };
 
 let
   pythonPackages = python311Packages; # Change to Python 3.11
+  kaleido = pkgs.python3Packages.callPackage ./kaleido.nix {};
 in pkgs.mkShell rec {
   name = "impurePythonEnv";
   venvDir = "./.venv";
@@ -21,6 +22,7 @@ in pkgs.mkShell rec {
     pythonPackages.numpy
     pythonPackages.pandas
     pythonPackages.requests
+    kaleido
 
     # sometimes you might need something additional like the following - you will get some useful error if it is looking for a binary in the environment.
     taglib
